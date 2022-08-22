@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.header {
+    display: flex;
+    height: 60px;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ebeff5;
+    span {
+        display: flex;
+        flex-direction: column;
+        color: #7694c2;
+        line-height: 20px;
+    }
+}
+
+.invite-btn{
+    border: 1px solid #7694c2;
+    border-radius: 8px;
+    height: 35px;
+    color: #7694c2;
+    font-weight: 700;
+    background-color: #ffffff;
+}
