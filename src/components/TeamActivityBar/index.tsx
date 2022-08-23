@@ -1,3 +1,5 @@
+import React from "react";
+
 function TeamActivityBar() {
     return (
       <section className="players-row">

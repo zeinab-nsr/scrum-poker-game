@@ -1,3 +1,4 @@
+import React from "react";
 import Header from'./components/Header/index';
 import Result from'./components/Result/index';
 import TeamActivityBar from'./components/TeamActivityBar/index';
