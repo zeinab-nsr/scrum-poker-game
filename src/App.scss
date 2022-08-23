@@ -35,10 +35,29 @@ button {
     width: 70%;
     background-color: #ebeff5;
     height: 200px;
-    margin: 100px auto;
+    margin: 100px auto 50px;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #7694c2;
+}
+
+.players-row {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.player {
+    background-color: #ebeff5;
+    height: 80px;
+    width: 20%;
+    line-height: 80px;
+    text-align: center;
+    color: #7694c2;
+    border: 1px solid;
+    border-radius: 8px;
 }

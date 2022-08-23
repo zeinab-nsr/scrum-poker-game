@@ -1,5 +1,6 @@
-import Header from'./components/Header/index'
-import Result from'./components/Result/index'
+import Header from'./components/Header/index';
+import Result from'./components/Result/index';
+import TeamActivityBar from'./components/TeamActivityBar/index';
 import './App.scss';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className='container'>
       <Header />
       <Result />
+      <TeamActivityBar />
     </div>  
   );
 }
