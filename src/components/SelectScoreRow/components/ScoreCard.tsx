@@ -1,3 +1,5 @@
+import React = require("react");
+
 function ScoreCard() {
     return (
       <div className="score-card">

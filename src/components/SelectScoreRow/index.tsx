@@ -1,3 +1,4 @@
+import React = require("react");
 import ScoreCard from "./components/ScoreCard";
 
 function SelectScoreRow() {

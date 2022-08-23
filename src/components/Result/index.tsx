@@ -1,3 +1,5 @@
+import React = require("react");
+
  function Result() {
     return (
       <section className="result-desk">
