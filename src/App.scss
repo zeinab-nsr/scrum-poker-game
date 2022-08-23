@@ -60,4 +60,31 @@ button {
     color: #7694c2;
     border: 1px solid;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.select-score-row {
+    width: 70%;
+    margin: 0 auto 50px;
+}
+
+.score-card {
+    width: 150px;
+    height: 230px;
+    background-color: #ebeff5;
+    border: 1px solid #7694c2;
+    border-radius: 8px;
+}
+
+.score {
+    width: calc(100% - 50px);
+    background-color: #fff;
+    height: calc(100% - 50px);
+    border-radius: 8px;
+    margin: 25px;
+    border: 1px solid #7694c2;
+    font-size: 40px;
+    color: #7694c2;
+    text-align: center;
+    line-height: 180px;
 }
