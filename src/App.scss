@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: sans-serif;
+    margin: 0;
 }
 
 button {
@@ -22,11 +23,91 @@ button {
     }
 }
 
-.invite-btn{
+.invite-btn {
     border: 1px solid #7694c2;
     border-radius: 8px;
     height: 35px;
     color: #7694c2;
     font-weight: 700;
     background-color: #ffffff;
+}
+
+.result-desk {
+    width: 70%;
+    background-color: #ebeff5;
+    height: 200px;
+    margin: 70px auto 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7694c2;
+}
+
+.players-row {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.player {
+    background-color: #ebeff5;
+    height: 80px;
+    width: 20%;
+    line-height: 80px;
+    text-align: center;
+    color: #7694c2;
+    border: 1px solid;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.select-score-row {
+    width: 70%;
+    margin: 0 auto 50px;
+}
+
+.score-card {
+    width: 150px;
+    height: 230px;
+    background-color: #ebeff5;
+    border: 1px solid #7694c2;
+    border-radius: 8px;
+}
+
+.score {
+    width: calc(100% - 50px);
+    background-color: #fff;
+    height: calc(100% - 50px);
+    border-radius: 8px;
+    margin: 25px;
+    border: 1px solid #7694c2;
+    font-size: 40px;
+    color: #7694c2;
+    text-align: center;
+    line-height: 180px;
+    cursor: pointer;
+    position: relative;
+
+    &::after, &::before {
+        content: '2';
+        color: #7694c2;
+        font-size: 16px;
+        position: absolute;
+        line-height: 0;
+        font-weight: 700;
+    }
+ 
+    &::before {
+        top: -11px;
+        left: -16px;
+    }
+
+    &::after {
+        bottom: -11px;
+        right: -16px;
+        transform: rotate(180deg);
+    }
 }
