@@ -1,9 +1,9 @@
+import React from "react";
 import Header from'./components/Header/index';
 import Result from'./components/Result/index';
 import TeamActivityBar from'./components/TeamActivityBar/index';
 import SelectScoreRow from'./components/SelectScoreRow/index';
 import './App.scss';
-import React = require('react');
 
 function App() {
   return (
