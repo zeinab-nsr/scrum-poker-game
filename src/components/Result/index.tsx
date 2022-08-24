@@ -6,6 +6,6 @@ import React from "react";
         Waiting for player's votes...
       </section>  
     );
-  }
+  } 
   
   export default Result;
