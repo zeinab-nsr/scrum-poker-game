@@ -1,4 +1,5 @@
 const http = require("http");
+import { WebSocketServer } from "ws";
 const port = 3001;
 
 const server = http.createServer((req, res) => {
