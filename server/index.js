@@ -13,6 +13,10 @@ const messages = {
   javascript: [],
 }
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 io.on("connection", socket => {
   socket.on("join server", (username) => {
     const user = {
@@ -57,4 +61,4 @@ io.on("connection", socket => {
   });
 });
 
-app.listen(3000, () => {console.log('server is runnig on port 3000...')});
+server.listen(3000);
