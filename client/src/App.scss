@@ -92,7 +92,6 @@ button {
     position: relative;
 
     &::after, &::before {
-        content: var(--x);
         color: #7694c2;
         font-size: 16px;
         position: absolute;
