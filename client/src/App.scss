@@ -70,7 +70,7 @@ button {
 }
 
 .score-card {
-    width: 150px;
+    width: 20%;
     height: 230px;
     background-color: #ebeff5;
     border: 1px solid #7694c2;
@@ -92,7 +92,6 @@ button {
     position: relative;
 
     &::after, &::before {
-        content: '2';
         color: #7694c2;
         font-size: 16px;
         position: absolute;
@@ -109,5 +108,18 @@ button {
         bottom: -11px;
         right: -16px;
         transform: rotate(180deg);
+    }
+
+    &-row {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    &-wrapper {
+        :last-child {
+            justify-content: space-evenly;
+        }
     }
 }
