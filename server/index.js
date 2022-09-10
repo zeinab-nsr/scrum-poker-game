@@ -13,7 +13,7 @@ const messages = {
   javascript: [],
 }
 
-app.get('/', (req, res) => {
+app.get('/express_backend', (req, res) => {
   res.send('Hello World!')
 })
 
