@@ -1,8 +1,7 @@
 import React from "react";
-import Header from'./components/Header/index';
-import Result from'./components/Result/index';
-import TeamActivityBar from'./components/TeamActivityBar/index';
-import SelectScoreRow from'./components/SelectScoreRow/index';
+import { Routes, Route } from "react-router-dom";
+import Home from './components/Home/index';
+import Login from './components/Login/index';
 import './App.scss';
 
 function App() {
@@ -23,12 +22,10 @@ function App() {
   };
 
   return (
-    <section className='container'>
-      <Header />
-      <Result />
-      <TeamActivityBar />
-      <SelectScoreRow />
-    </section>  
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="login" element={<Login />} />
+    </Routes>
   );
 }
 
