@@ -123,3 +123,40 @@ button {
         }
     }
 }
+
+.login-container {
+    background-color: #ebeff5;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-wrapper {
+    border: 1px solid #7694c2;
+    border-radius: 8px;
+    width: 50%;
+    height: auto;
+    padding: 32px;
+    background-color: #ffffff;
+    color: #7694c2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+
+    input {
+        border: 1px solid#7694c2;
+        height: 35px;
+        border-radius: 8px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .login-form-wrapper { 
+        width: 80%;
+    }
+  }
+  
