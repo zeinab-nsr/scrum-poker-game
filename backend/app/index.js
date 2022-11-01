@@ -11,9 +11,21 @@ function App() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
+  // constants
+  const users = [];
+
   // socket events
   io.on("connection", (socket) => { // socket instance
-    socket.emit("hello", "world");
+    
+    io.on("join room", (username) => {
+      const user = {
+        username,
+        // id: socket.id,
+      }
+      users.push(user);
+      console.log('users', users);
+      io.emit("new user", users);
+    });
   });
 
   // APIs
