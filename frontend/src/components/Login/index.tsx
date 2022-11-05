@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { io } from "socket.io-client";
 import { useNavigate } from 'react-router-dom';
 
+const socket = io();
+
 function Login() {
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
@@ -11,8 +13,7 @@ function Login() {
   }
 
   function handleSubmit() {
-    const socket = io();
-    socket.emit("join room", { user: userName });
+    socket.emit("join room", userName);
     navigate("/home");
   }
 
