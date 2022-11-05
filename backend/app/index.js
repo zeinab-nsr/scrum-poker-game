@@ -15,9 +15,9 @@ function App() {
   const users = [];
 
   // socket events
-  io.on("connection", (socket) => { // socket instance
-    
-    io.on("join room", (username) => {
+  io.on("connection", socket => { // socket instance
+    console.log('socket io connected')
+    socket.on("join room", (username) => {
       const user = {
         username,
         // id: socket.id,
