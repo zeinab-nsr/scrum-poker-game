@@ -136,6 +136,15 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-image: url(./assets/pattern.png);
+    background-size: cover;
+    background-repeat: repeat;
+    
+    h1 {
+        color: #7694c2;
+        padding: 50px 0;
+    }
 }
 
 .login-form-wrapper {

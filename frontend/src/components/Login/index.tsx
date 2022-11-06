@@ -19,6 +19,9 @@ function Login() {
 
   return (
     <section className='login-container'>
+      <h1>
+        Online Scrum Poker Game!
+      </h1>
       <form className="login-form-wrapper" onSubmit={handleSubmit}>
         <label>Enter your name:</label>
         <input type="text" value={userName} onChange={handleChange} />
