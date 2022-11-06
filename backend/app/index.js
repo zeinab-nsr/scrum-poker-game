@@ -12,20 +12,26 @@ function App() {
   app.use(bodyParser.urlencoded({ extended: true }));
 
   // constants
-  const users = [];
+  let users = [];
 
   // socket events
   io.on("connection", socket => { // socket instance
-    console.log('socket io connected')
+
     socket.on("join room", (username) => {
       const user = {
         username,
-        // id: socket.id,
+        id: socket.id,
       }
       users.push(user);
       console.log('users', users);
       io.emit("new user", users);
     });
+
+    socket.on("disconnect", () => {
+      users = users.filter(u => u.id !== socket.id);
+      io.emit("new user", users);
+    });
+
   });
 
   // APIs
@@ -72,10 +78,5 @@ module.exports = App;
 //         content
 //       })
 //     }
-//   });
-
-//   socket.on("disconnect", () => {
-//     users = users.filter(u => u.id !== socket.io);
-//     io.emit("new user", users);
 //   });
 // });
