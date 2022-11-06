@@ -5,6 +5,7 @@ const socket = io();
 
 interface User {
   username: string;
+  id: string;
 }
 
 function TeamActivityBar() {
@@ -22,8 +23,8 @@ function TeamActivityBar() {
   return (
     <section className="players-row">
       {
-        users && users.map((user, idx) => (
-          <div key={idx} className="player">{user.username}</div>
+        users && users.map(user => (
+          <div key={user.id} className="player">{user.username}</div>
         ))
       }
     </section>
