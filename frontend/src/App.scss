@@ -50,7 +50,8 @@ button {
     justify-content: space-between;
     margin: 0 auto;
     margin-bottom: 50px;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 16px;
 }
 
@@ -117,6 +118,8 @@ button {
         display: flex;
         justify-content: space-between;
         margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
     &-wrapper {
