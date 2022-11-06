@@ -136,6 +136,12 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+
+    h1 {
+        color: #7694c2;
+        padding: 50px 0;
+    }
 }
 
 .login-form-wrapper {
