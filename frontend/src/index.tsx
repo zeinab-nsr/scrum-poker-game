@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 
   const socket = io();
 
-  socket.on("new user", (users) => {
+  socket.on("updated users", (users) => {
     console.log('users', users);
   });
 

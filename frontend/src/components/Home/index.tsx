@@ -2,7 +2,7 @@ import React from "react";
 import Header from '../Header/index';
 import Result from '../Result/index';
 import TeamActivityBar from '../TeamActivityBar/index';
-import SelectScoreRow from '../SelectScoreRow/index';
+import Score from "../Score/index";
 
 function Home() {
 
@@ -11,7 +11,7 @@ function Home() {
       <Header />
       <Result />
       <TeamActivityBar />
-      <SelectScoreRow />
+      <Score />
     </section>  
   );
 }
