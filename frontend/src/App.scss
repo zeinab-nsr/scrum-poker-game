@@ -191,15 +191,24 @@ button {
     }
 }
 
-@media screen and (max-width: 750px) {
-    .login-form-wrapper { 
-        width: 80%;
-    }
-  }
-
 @keyframes blink {
     50% {
         opacity: 0.0;
     }
 }
-  
+
+@media screen and (max-width: 768px) {
+    .login-form-wrapper { 
+        width: 80%;
+    }
+
+    .score-card {
+        width: 44%;
+    }
+}
+
+@media only screen and (max-width : 420px) {
+    .score {
+        font-size: 25px;
+    }
+}
