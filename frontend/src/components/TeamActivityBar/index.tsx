@@ -6,17 +6,19 @@ const socket = io();
 interface User {
   username: string;
   id: string;
+  rated: boolean;
 }
 
 function TeamActivityBar() {
   const [users, setUsers] = useState<[User]>();
   
   useEffect(() => {
-    socket.on("new user", (newUsersList: [User]) => {
+    socket.on("updated users", (newUsersList: [User]) => {
       setUsers(newUsersList);
     });
+
     return () => {
-      socket.off('new user');
+      socket.off('updated users');
     };
   }, []);
 

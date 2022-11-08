@@ -6,7 +6,6 @@ function SelectScoreRow() {
       <section className="select-score-row">
         <ScoreCard />
       </section>
-      
     );
   }
   

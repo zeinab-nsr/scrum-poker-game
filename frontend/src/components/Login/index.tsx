@@ -14,6 +14,9 @@ function Login() {
 
   function handleSubmit() {
     socket.emit("join room", userName);
+    socket.on("get id", (userId) => {
+      sessionStorage.setItem("id", userId);
+    })
     navigate("/home");
   }
 

@@ -13,6 +13,7 @@ function App() {
 
   // constants
   let users = [];
+  let scores = [];
 
   // socket events
   io.on("connection", socket => { // socket instance
@@ -21,15 +22,42 @@ function App() {
       const user = {
         username,
         id: socket.id,
+        voted: false,
       }
       users.push(user);
       console.log('users', users);
-      io.emit("new user", users);
+      io.emit("updated users", users);
+      io.emit("get id", socket.id);
     });
 
     socket.on("disconnect", () => {
       users = users.filter(u => u.id !== socket.id);
-      io.emit("new user", users);
+      io.emit("updated users", users);
+    });
+
+    socket.on("add score", ({score, userId}) => {
+      const scoreItem = {
+        score,
+        userId,
+      }
+      const i = scores.findIndex(item => item.userId === scoreItem.userId);
+      if (i > -1) scores[i] = scoreItem;
+      else scores.push(scoreItem);
+      console.log('scores', scores);
+
+      users.map(user => {
+        if (user.id === userId) user.voted = true;
+      })
+      console.log('users', users);
+      io.emit("updated users", users);
+
+      let avg = 0;
+      if(scores.length === users.length) {
+        const numericalScores = scores.filter(item => item.score !== '?')
+        avg = numericalScores.reduce((sum, item) => sum + item.score, 0) / numericalScores.length;
+        console.log('avg', avg)
+        io.emit("average", avg);
+      }
     });
 
   });
@@ -49,7 +77,7 @@ module.exports = App;
 //       id: socket.id,
 //     }
 //     users.push(user);
-//     io.emit("new user", users);
+//     io.emit("updated users", users);
 //   });
 
 //   socket.on("join room", (roomName, cb) => {
