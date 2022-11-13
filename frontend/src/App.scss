@@ -87,6 +87,14 @@ button {
     border: 1px solid;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.7s;
+
+    &.voted {
+        background-color: #7694c2;
+        color: #ebeff5;
+        border: 1px solid #ebeff5;
+        transform: rotateY(360deg);
+    }
 }
 
 .select-score-row {

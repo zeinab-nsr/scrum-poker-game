@@ -6,7 +6,7 @@ const socket = io();
 interface User {
   username: string;
   id: string;
-  rated: boolean;
+  voted: boolean;
 }
 
 function TeamActivityBar() {
@@ -26,7 +26,7 @@ function TeamActivityBar() {
     <section className="players-row">
       {
         users && users.map(user => (
-          <div key={user.id} className="player">{user.username}</div>
+          <div key={user.id} className={!user.voted ? "player" : "player voted"}>{user.username}</div>
         ))
       }
     </section>
