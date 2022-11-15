@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { io } from "socket.io-client";
-
-const socket = io();
+import {onUsersModified, offUsersModified} from "../../socker";
 
 interface User {
   username: string;
@@ -13,12 +11,10 @@ function TeamActivityBar() {
   const [users, setUsers] = useState<[User]>();
   
   useEffect(() => {
-    socket.on("updated users", (newUsersList: [User]) => {
-      setUsers(newUsersList);
-    });
+    onUsersModified(setUsers);
 
     return () => {
-      socket.off('updated users');
+      offUsersModified();
     };
   }, []);
 

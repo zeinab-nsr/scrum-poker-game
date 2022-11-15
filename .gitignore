@@ -1,6 +1,0 @@
-node_modules
-
-# IDE / Editor
-.idea
-
-package-lock.json

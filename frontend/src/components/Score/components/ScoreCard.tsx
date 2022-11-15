@@ -1,8 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
-import {io} from "socket.io-client"
-
-const socket = io()
+import {emitAddScore} from "../../../socker";
 
 function ScoreCard() {
 
@@ -19,7 +17,7 @@ function ScoreCard() {
 
   function addScore(score: string | number) {
     const userId = sessionStorage.getItem("id");
-    socket.emit("add score", {score, userId});
+    emitAddScore( {score, userId});
 
   }
 

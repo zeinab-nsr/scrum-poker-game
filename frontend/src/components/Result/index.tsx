@@ -1,18 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {io} from "socket.io-client"
-
-const socket = io()
+import {onGetAvg, offGEtAvg} from "../../socker";
 
 function Result() {
   const [avg, setAvg] = useState<number>();
 
   useEffect(() => {
-    socket.on("average", (avg) => {
-      setAvg(avg);
-    });
+    onGetAvg(setAvg);
 
     return () => {
-      socket.off('average');
+      offGEtAvg();
     };
   }, []);
 
