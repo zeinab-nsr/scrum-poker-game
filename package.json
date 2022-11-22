@@ -1,0 +1,11 @@
+{
+  "name": "scrum-poker-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zeinab-nsr/scrum-poker-game.git",
+  "author": "Maryam Rahimi <mrahimi.jp@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^6.0.3"
+  }
+}
