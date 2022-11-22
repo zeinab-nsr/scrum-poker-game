@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components'
 import {emitAddScore} from "../../../socker";
 
 function ScoreCard() {
-
-  const scores = [1, 2, 3, 5, 8, 13, 20, 40, 100, '?']
+  const [selectedScore, setSelectedScore] = useState<string | number>('');
+  const scores = [1, 2, 3, 5, 8, 13, 20, 40, 100, '?'];
 
   const StyledScore = styled.div`
     &:after {
@@ -15,7 +15,8 @@ function ScoreCard() {
     }
   `;
 
-  function addScore(score: string | number) {
+  function handleSelectScore(score: string | number) {
+    setSelectedScore(score);
     const userId = sessionStorage.getItem("id");
     emitAddScore( {score, userId});
 
@@ -25,7 +26,7 @@ function ScoreCard() {
     <section className="score-wrapper">
       <div className="score-row">
         {scores.map(score =>
-          <div key={score} className="score-card" onClick={() => addScore(score)}>
+          <div key={score} className={selectedScore !== score ? "score-card" : "score-card selected"} onClick={() => handleSelectScore(score)}>
             <StyledScore className="score" defaultValue={score}>
               {score}
             </StyledScore>
