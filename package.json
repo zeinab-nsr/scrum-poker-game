@@ -1,10 +1,18 @@
 {
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.6",
-    "body-parser": "^1.20.1",
-    "redux": "^4.2.0"
-  },
+  "name": "@spg/scrum",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "repository": "https://github.com/zeinab-nsr/scrum-poker-game.git",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "lerna": "^6.0.3"
+  },
+  "scripts": {
+    "build": "lerna run build"
+  },
+  "workspaces": {
+    "packages": [
+      "application/*"
+    ]
   }
 }
