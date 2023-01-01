@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {onUsersModified, offUsersModified} from "../../socker";
+import {onUsersModified, offUsersModified} from "../../socket";
 
 interface User {
   username: string;

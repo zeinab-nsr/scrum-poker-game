@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 // @ts-ignore
-import { SockerEvents } from "@spg/shared/src";
+import { SocketEvents } from "@spg/shared/src";
 
 const socket = io();
 
@@ -16,30 +16,30 @@ interface Score {
 }
 
 export function joinRoom(username: string) {
-  socket.emit(SockerEvents.JOIN_ROOM, username);
+  socket.emit(SocketEvents.JOIN_ROOM, username);
   sessionStorage.setItem("username", username);
 }
 
 export function onUsersModified(callback: Function) {
-  socket.on(SockerEvents.USERS_MODIFIED, (newUsersList: [User]) => {
+  socket.on(SocketEvents.USERS_MODIFIED, (newUsersList: [User]) => {
     callback(newUsersList);
   });
 }
 
 export function onGetAvg(callback: Function) {
-  socket.on(SockerEvents.GET_AVG, (avg: number) => {
+  socket.on(SocketEvents.GET_AVG, (avg: number) => {
     callback(avg);
   });
 }
 
 export function emitAddScore(score: Score) {
-  socket.emit(SockerEvents.ADD_SCORE, score);
+  socket.emit(SocketEvents.ADD_SCORE, score);
 }
 
 export function offUsersModified() {
-  socket.off(SockerEvents.USERS_MODIFIED);
+  socket.off(SocketEvents.USERS_MODIFIED);
 }
 
 export function offGEtAvg() {
-  socket.off(SockerEvents.GET_AVG);
+  socket.off(SocketEvents.GET_AVG);
 }
