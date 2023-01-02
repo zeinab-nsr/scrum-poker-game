@@ -1,4 +1,4 @@
-const SockerEvents = require('./sockerEvents').default;
+const SockerEvents = require('./socketEvents').default;
 
 module.exports = {
     SockerEvents
