@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
-import {emitAddScore} from "../../../socket";
+import { SocketEvents } from '@spg/shared/src';
+import { clientSocket } from "../../../socket/clientSocket";
 
 function ScoreCard() {
   const [selectedScore, setSelectedScore] = useState<string | number>('');
@@ -18,7 +19,7 @@ function ScoreCard() {
   function handleSelectScore(score: string | number) {
     setSelectedScore(score);
     const username = sessionStorage.getItem("username");
-    emitAddScore( {score, username});
+    clientSocket.emitEvent(SocketEvents.ADD_SCORE, {score, username});
   }
 
   return (

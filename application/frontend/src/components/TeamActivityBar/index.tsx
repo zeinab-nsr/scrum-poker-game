@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {onUsersModified, offUsersModified} from "../../socket";
+import React, {useEffect, useState} from 'react';
+import { SocketEvents } from '@spg/shared/src';
+import { clientSocket } from '../../socket/clientSocket';
 
 interface User {
   username: string;
@@ -11,12 +12,15 @@ function TeamActivityBar() {
   const [users, setUsers] = useState<[User]>();
   
   useEffect(() => {
-    onUsersModified(setUsers);
-
-    return () => {
-      offUsersModified();
-    };
+    clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, handleUpdateUser);
+    //return () => {
+      //clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, () => socket.off(SocketEvents.USERS_MODIFIED));
+    //};
   }, []);
+
+  function handleUpdateUser(users: [User]) {
+    setUsers(users);
+  }
 
   return (
     <section className="players-row">

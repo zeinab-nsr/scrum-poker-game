@@ -1,5 +1,5 @@
-const SockerEvents = require('./socketEvents').default;
+const SocketEvents = require('./socketEvents').default;
 
 module.exports = {
-    SockerEvents
+    SocketEvents
 };
