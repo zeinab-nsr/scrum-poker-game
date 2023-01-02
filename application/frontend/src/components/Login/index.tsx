@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
-import {joinRoom} from "../../socker";
+import {joinRoom} from "../../socket";
 
 function Login() {
   const [username, setUsername] = useState('');

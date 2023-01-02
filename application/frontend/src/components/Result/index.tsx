@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {onGetAvg, offGEtAvg} from "../../socker";
+import {onGetAvg, offGEtAvg} from "../../socket";
 
 function Result() {
   const [avg, setAvg] = useState<number>();

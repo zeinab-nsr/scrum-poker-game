@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
-import {emitAddScore} from "../../../socker";
+import {emitAddScore} from "../../../socket";
 
 function ScoreCard() {
   const [selectedScore, setSelectedScore] = useState<string | number>('');

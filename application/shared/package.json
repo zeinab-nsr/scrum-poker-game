@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/zeinab-nsr/scrum-poker-game/issues"
   },
-  "homepage": "https://github.com/zeinab-nsr/scrum-poker-game#readme"
+  "homepage": "https://github.com/zeinab-nsr/scrum-poker-game#readme",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  }
 }
