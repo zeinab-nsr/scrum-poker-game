@@ -17,7 +17,7 @@ function Login() {
   }
 
   function handleNewUserLogin() {
-    clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username)
+    clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username);
     sessionStorage.setItem("username", username);
   }
 
@@ -26,7 +26,7 @@ function Login() {
       <h1>
         Online Scrum Poker Game!
       </h1>
-      <form className="login-form-wrapper" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>Enter your name:</label>
         <input type="text" value={username} onChange={handleChange} />
         <input type="submit" className='invite-btn' value="Login to room!" />
