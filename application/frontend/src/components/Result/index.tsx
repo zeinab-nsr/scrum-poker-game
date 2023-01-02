@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from "react";
-import {onGetAvg, offGEtAvg} from "../../socket";
+import { SocketEvents } from '@spg/shared/src';
+import { clientSocket } from "../../socket/clientSocket";
 
 function Result() {
   const [avg, setAvg] = useState<number>();
 
   useEffect(() => {
-    onGetAvg(setAvg);
-
-    return () => {
-      offGEtAvg();
-    };
+    clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, calculateAverageScore);
+    // return () => {
+    //   offGEtAvg();
+    // };
   }, []);
+
+  function calculateAverageScore(average: number) {
+    setAvg(average);
+  }
 
   return (
     <section className="result-desk">

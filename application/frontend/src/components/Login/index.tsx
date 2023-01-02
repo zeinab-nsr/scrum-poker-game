@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import {joinRoom} from "../../socket";
+import { SocketEvents } from '@spg/shared/src';
+import { clientSocket } from '../../socket/clientSocket';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -11,8 +12,13 @@ function Login() {
   }
 
   function handleSubmit() {
-    joinRoom(username);
+    clientSocket.listenToSocketEvent(SocketEvents.JOIN_ROOM, handleNewUserLogin);
     navigate("/home");
+  }
+
+  function handleNewUserLogin() {
+    clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username)
+    sessionStorage.setItem("username", username);
   }
 
   return (
