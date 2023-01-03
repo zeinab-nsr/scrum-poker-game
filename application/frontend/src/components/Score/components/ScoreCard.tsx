@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import { SocketEvents } from '@spg/shared/src';
-import { clientSocket } from "../../../socket/clientSocket";
+import { clientSocket } from '../../../socket/clientSocket';
 
 function ScoreCard() {
   const [selectedScore, setSelectedScore] = useState<string | number>('');
