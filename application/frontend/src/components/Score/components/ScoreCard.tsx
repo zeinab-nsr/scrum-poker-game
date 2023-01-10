@@ -18,8 +18,11 @@ function ScoreCard() {
 
   function handleSelectScore(score: string | number) {
     setSelectedScore(score);
-    const username = sessionStorage.getItem("username");
-    clientSocket.emitEvent(SocketEvents.ADD_SCORE, {score, username});
+    const user = sessionStorage.getItem("username");
+    if (user) {
+      const userId = JSON.parse(user)?.[0].id;
+      clientSocket.emitEvent(SocketEvents.ADD_SCORE, {score, userId});
+    }
   }
 
   return (

@@ -18,7 +18,7 @@ function Login() {
   }
 
   function handleNewUserLogin(users) {
-    sessionStorage.setItem("username", users);
+    sessionStorage.setItem("username", JSON.stringify(users));
   }
 
   return (

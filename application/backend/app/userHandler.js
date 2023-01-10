@@ -22,24 +22,23 @@ module.exports = (io, socket) => {
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
-    const addScore = ({score, username}) => {
-        const scoreItem = {
-            score,
-            username,
-        }
-        const i = scores.findIndex(item => item.username === username);
-        if (i > -1) scores[i] = scoreItem;
-        else scores.push(scoreItem);
+    const addScore = ({score, userId}) => {
+        // const scoreItem = {
+        //     score,
+        //     userId,
+        // }
+        // const i = scores.findIndex(item => item.username === username);
+        // if (i > -1) scores[i] = scoreItem;
+        // else scores.push(scoreItem);
 
-        setUserVoted( username );
+        setUserVoted( userId );
         setAvg();
     }
 
-    const setUserVoted = (username) => {
+    const setUserVoted = (userId) => {
         users.map(user => {
-            if (user.username === username) user.voted = true;
+            if (user.id === userId) user.voted = true;
         })
-        
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
