@@ -23,14 +23,6 @@ module.exports = (io, socket) => {
     }
 
     const addScore = ({score, userId}) => {
-        // const scoreItem = {
-        //     score,
-        //     userId,
-        // }
-        // const i = scores.findIndex(item => item.username === username);
-        // if (i > -1) scores[i] = scoreItem;
-        // else scores.push(scoreItem);
-
         setUserVoted( userId );
         setAvg();
     }
