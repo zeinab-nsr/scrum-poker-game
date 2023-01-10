@@ -1,14 +1,18 @@
 import { Reducer } from "react";
 import ActionTypes from "./users.contants"
-import { Action } from "./users.types";
+import { Action, User } from "./users.types";
 
 export interface UsersState {
-	user: string;
+	user: User;
   onlinePlayers: [],
 }
 
 export const initialState: UsersState = {
-	user: "",
+	user: {
+    username: '',
+    id: '',
+    voted: false,
+  },
   onlinePlayers: [],
 };
 
