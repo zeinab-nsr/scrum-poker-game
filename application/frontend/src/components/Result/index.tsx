@@ -6,7 +6,7 @@ function Result() {
   const [avg, setAvg] = useState<number>();
 
   useEffect(() => {
-    clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, calculateAverageScore);
+    clientSocket.listenToSocketEvent(SocketEvents.GET_AVG, calculateAverageScore);
     // return () => {
     //   offGEtAvg();
     // };

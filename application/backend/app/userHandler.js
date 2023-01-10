@@ -1,4 +1,4 @@
-const { SocketEvents } = require( '@spg/shared/src' );
+const { SocketEvents } = require('@spg/shared/src');
 
 // variables
 let users = [];
