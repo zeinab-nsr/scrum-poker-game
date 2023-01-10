@@ -25,7 +25,7 @@ function TeamActivityBar() {
   return (
     <section className="players-row">
       {
-        users && users.map(user => (
+        users?.length && users.map(user => (
           <div key={user.id} className={!user.voted ? "player" : "player voted"}>{user.username}</div>
         ))
       }

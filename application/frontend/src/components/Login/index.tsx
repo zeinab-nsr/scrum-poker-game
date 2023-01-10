@@ -12,13 +12,14 @@ function Login() {
   }
 
   function handleSubmit() {
-    clientSocket.listenToSocketEvent(SocketEvents.JOIN_ROOM, handleNewUserLogin);
+    clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username);
+    clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, handleNewUserLogin);
     navigate("/home");
   }
 
-  function handleNewUserLogin() {
-    clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username);
-    sessionStorage.setItem("username", username);
+  function handleNewUserLogin(users) {
+    console.log('fd',users)
+    sessionStorage.setItem("username", users);
   }
 
   return (
