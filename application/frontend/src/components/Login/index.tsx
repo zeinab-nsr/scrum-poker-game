@@ -18,7 +18,6 @@ function Login() {
   }
 
   function handleNewUserLogin(users) {
-    console.log('fd',users)
     sessionStorage.setItem("username", users);
   }
 
