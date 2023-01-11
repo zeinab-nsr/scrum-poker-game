@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
+import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { SocketEvents } from '@spg/shared/src';
+import UserActions from '../../store/User/users.actions';
 import { clientSocket } from '../../socket/clientSocket';
 
 function Login() {
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUsername(e.target.value);
@@ -18,7 +21,7 @@ function Login() {
   }
 
   function handleNewUserLogin(users) {
-    sessionStorage.setItem("username", JSON.stringify(users));
+    dispatch(UserActions.setUserInfo(users));
   }
 
   return (
