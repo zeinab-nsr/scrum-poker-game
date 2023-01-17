@@ -1,4 +1,5 @@
 const { SocketEvents } = require('@spg/shared/src');
+const { getClosestNumberInScores } = require('./utils/helper.util');
 
 // variables
 let users = [];
@@ -43,7 +44,8 @@ module.exports = (io, socket) => {
         if(scores.length === users.length) {
             const numericScores = scores.filter(score => score !== '?');
             avg = numericScores.reduce((sum, score) => sum + score, 0) / numericScores.length;
-            io.emit(SocketEvents.GET_AVG, avg);
+            const result = getClosestNumberInScores(avg);
+            io.emit(SocketEvents.GET_AVG, result);
         }
     }
 
