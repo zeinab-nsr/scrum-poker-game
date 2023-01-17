@@ -16,12 +16,12 @@ function Login() {
 
   function handleSubmit() {
     clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username);
-    clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, handleNewUserLogin);
+    clientSocket.listenToSocketEvent(SocketEvents.USER_JOINED, handleNewUserLogin);
     navigate("/home");
   }
 
-  function handleNewUserLogin(users) {
-    dispatch(UserActions.setUserInfo(users));
+  function handleNewUserLogin(newUser) {
+    dispatch(UserActions.setUserInfo(newUser));
   }
 
   return (

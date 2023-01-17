@@ -14,6 +14,7 @@ module.exports = (io, socket) => {
         }
         users.push(user);
 
+        io.emit(SocketEvents.USER_JOINED, user);
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
@@ -23,7 +24,7 @@ module.exports = (io, socket) => {
     }
 
     const addScore = ({score, userId}) => {
-        setUserVoted( userId );
+        setUserVoted(userId);
         setAvg();
     }
 

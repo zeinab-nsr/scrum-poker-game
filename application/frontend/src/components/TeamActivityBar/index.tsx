@@ -11,7 +11,6 @@ function TeamActivityBar() {
   }, []);
 
   function handleUpdateUser(users: [User]) {
-    console.log('fsf',users)
     setUsers(users);
   }
 
