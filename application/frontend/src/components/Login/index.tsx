@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
+import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { SocketEvents } from '@spg/shared/src';
+import UserActions from '../../store/User/users.actions';
 import { clientSocket } from '../../socket/clientSocket';
 
 function Login() {
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUsername(e.target.value);
@@ -13,12 +16,12 @@ function Login() {
 
   function handleSubmit() {
     clientSocket.emitEvent(SocketEvents.JOIN_ROOM, username);
-    clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, handleNewUserLogin);
+    clientSocket.listenToSocketEvent(SocketEvents.USER_JOINED, handleNewUserLogin);
     navigate("/home");
   }
 
-  function handleNewUserLogin(users) {
-    sessionStorage.setItem("username", users);
+  function handleNewUserLogin(newUser) {
+    dispatch(UserActions.setUserInfo(newUser));
   }
 
   return (

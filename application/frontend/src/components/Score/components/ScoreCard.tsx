@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { SocketEvents } from '@spg/shared/src';
 import { clientSocket } from '../../../socket/clientSocket';
+import { UsersStore } from '../../../store/User/users.reducers'
 
 function ScoreCard() {
   const [selectedScore, setSelectedScore] = useState<string | number>('');
+  const user = useSelector(({ users }) => users.user);
   const scores = [1, 2, 3, 5, 8, 13, 20, 40, 100, '?'];
 
   const StyledScore = styled.div`
@@ -18,8 +21,10 @@ function ScoreCard() {
 
   function handleSelectScore(score: string | number) {
     setSelectedScore(score);
-    const username = sessionStorage.getItem("username");
-    clientSocket.emitEvent(SocketEvents.ADD_SCORE, {score, username});
+    if (user) {
+      const { id } = user;
+      clientSocket.emitEvent(SocketEvents.ADD_SCORE, {score, userId: id});
+    }
   }
 
   return (

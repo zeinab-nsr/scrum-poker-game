@@ -18,11 +18,18 @@ function Result() {
 
   return (
     <section className="result-desk">
-      <h1>{avg}</h1>
-      Waiting for player's votes
-      {[...Array(3)].map((_, idx) => ( 
-        <span key={idx} className="blinking-dot">.</span>
-      ))}
+      {avg ? 
+        <h1>{avg}</h1>
+        :
+        <>
+          Waiting for player's votes
+          {[...Array(3)].map((_, idx) => ( 
+            <span key={idx} className="blinking-dot">.</span>
+          ))}
+        </>
+      }
+      
+      
     </section>
   );
 }

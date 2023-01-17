@@ -14,6 +14,7 @@ module.exports = (io, socket) => {
         }
         users.push(user);
 
+        io.emit(SocketEvents.USER_JOINED, user);
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
@@ -22,37 +23,31 @@ module.exports = (io, socket) => {
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
-    const addScore = ({score, username}) => {
-        const scoreItem = {
-            score,
-            username,
-        }
-        const i = scores.findIndex(item => item.username === username);
-        if (i > -1) scores[i] = scoreItem;
-        else scores.push(scoreItem);
-
-        setUserVoted( username );
+    const addScore = ({score, userId}) => {
+        setUserVoted(userId, score);
         setAvg();
     }
 
-    const setUserVoted = (username) => {
+    const setUserVoted = (userId, score) => {
         users.map(user => {
-            if (user.username === username) user.voted = true;
+            if (user.id === userId && !user.voted) {
+                scores.push(Number(score));
+                user.voted = true;
+            };
         })
-        
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
     const setAvg = () => {
         let avg = 0;
         if(scores.length === users.length) {
-            const numericalScores = scores.filter(item => item.score !== '?')
-            avg = numericalScores.reduce((sum, item) => sum + item.score, 0) / numericalScores.length;
+            const numericScores = scores.filter(score => score !== '?');
+            avg = numericScores.reduce((sum, score) => sum + score, 0) / numericScores.length;
             io.emit(SocketEvents.GET_AVG, avg);
         }
     }
 
-    socket.on(SocketEvents.JOIN_ROOM, joinRoom)
-    socket.on(SocketEvents.DISCONNECT, disconnect)
-    socket.on(SocketEvents.ADD_SCORE, addScore)
+    socket.on(SocketEvents.JOIN_ROOM, joinRoom);
+    socket.on(SocketEvents.DISCONNECT, disconnect);
+    socket.on(SocketEvents.ADD_SCORE, addScore);
 }

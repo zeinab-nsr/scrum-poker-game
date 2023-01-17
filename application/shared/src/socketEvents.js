@@ -1,7 +1,8 @@
 module.exports.default = {
+    USER_JOINED: 'USER_JOINED',
     DISCONNECT: 'DISCONNECT',
     JOIN_ROOM: 'JOIN_ROOM',
     USERS_MODIFIED: 'USERS_MODIFIED',
     ADD_SCORE: 'ADD_SCORE',
-    GET_AVG: 'GET_AVG'
+    GET_AVG: 'GET_AVG',
 };

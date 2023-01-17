@@ -1,21 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { SocketEvents } from '@spg/shared/src';
 import { clientSocket } from '../../socket/clientSocket';
-
-interface User {
-  username: string;
-  id: string;
-  voted: boolean;
-}
+import { User } from '../../store/User/users.types';
 
 function TeamActivityBar() {
   const [users, setUsers] = useState<[User]>();
   
   useEffect(() => {
     clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, handleUpdateUser);
-    //return () => {
-      //clientSocket.listenToSocketEvent(SocketEvents.USERS_MODIFIED, () => socket.off(SocketEvents.USERS_MODIFIED));
-    //};
   }, []);
 
   function handleUpdateUser(users: [User]) {
