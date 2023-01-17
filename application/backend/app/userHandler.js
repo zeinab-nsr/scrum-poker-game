@@ -7,7 +7,7 @@ let scores = [];
 
 module.exports = (io, socket) => {
 
-    const joinRoom = (username) => {
+    const handleUserLogin = (username) => {
         const user = {
             username,
             id: socket.id,
@@ -19,17 +19,7 @@ module.exports = (io, socket) => {
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
 
-    const disconnect = () => {
-        users = users.filter(u => u.id !== socket.id);
-        io.emit(SocketEvents.USERS_MODIFIED, users);
-    }
-
-    const addScore = ({score, userId}) => {
-        setUserVoted(userId, score);
-        setAvg();
-    }
-
-    const setUserVoted = (userId, score) => {
+    const handleUserVote = ({score, userId}) => {
         users.map(user => {
             if (user.id === userId && !user.voted) {
                 scores.push(Number(score));
@@ -37,11 +27,12 @@ module.exports = (io, socket) => {
             };
         })
         io.emit(SocketEvents.USERS_MODIFIED, users);
+        calcResult();
     }
 
-    const setAvg = () => {
-        let avg = 0;
+    const calcResult = () => {
         if(scores.length === users.length) {
+            let avg = 0;
             const numericScores = scores.filter(score => score !== '?');
             avg = numericScores.reduce((sum, score) => sum + score, 0) / numericScores.length;
             const result = getClosestNumberInScores(avg);
@@ -49,7 +40,12 @@ module.exports = (io, socket) => {
         }
     }
 
-    socket.on(SocketEvents.JOIN_ROOM, joinRoom);
-    socket.on(SocketEvents.DISCONNECT, disconnect);
-    socket.on(SocketEvents.ADD_SCORE, addScore);
+    const handleUserDisconnect = () => {
+        users = users.filter(u => u.id !== socket.id);
+        io.emit(SocketEvents.USERS_MODIFIED, users);
+    }
+
+    socket.on(SocketEvents.JOIN_ROOM, handleUserLogin);
+    socket.on(SocketEvents.DISCONNECT, handleUserDisconnect);
+    socket.on(SocketEvents.ADD_SCORE, handleUserVote);
 }
