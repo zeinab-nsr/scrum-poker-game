@@ -24,13 +24,16 @@ module.exports = (io, socket) => {
     }
 
     const addScore = ({score, userId}) => {
-        setUserVoted(userId);
+        setUserVoted(userId, score);
         setAvg();
     }
 
-    const setUserVoted = (userId) => {
+    const setUserVoted = (userId, score) => {
         users.map(user => {
-            if (user.id === userId) user.voted = true;
+            if (user.id === userId && !user.voted) {
+                scores.push(Number(score));
+                user.voted = true;
+            };
         })
         io.emit(SocketEvents.USERS_MODIFIED, users);
     }
@@ -38,13 +41,13 @@ module.exports = (io, socket) => {
     const setAvg = () => {
         let avg = 0;
         if(scores.length === users.length) {
-            const numericalScores = scores.filter(item => item.score !== '?')
-            avg = numericalScores.reduce((sum, item) => sum + item.score, 0) / numericalScores.length;
+            const numericScores = scores.filter(score => score !== '?');
+            avg = numericScores.reduce((sum, score) => sum + score, 0) / numericScores.length;
             io.emit(SocketEvents.GET_AVG, avg);
         }
     }
 
-    socket.on(SocketEvents.JOIN_ROOM, joinRoom)
-    socket.on(SocketEvents.DISCONNECT, disconnect)
-    socket.on(SocketEvents.ADD_SCORE, addScore)
+    socket.on(SocketEvents.JOIN_ROOM, joinRoom);
+    socket.on(SocketEvents.DISCONNECT, disconnect);
+    socket.on(SocketEvents.ADD_SCORE, addScore);
 }
