@@ -6,7 +6,9 @@ let users = [];
 let scores = [];
 
 module.exports = (io, socket) => {
-    const handleUserLogin = (username) => {
+    // socket.join("some room");
+
+    const handleUserLogin = (username) => { // url
         const user = {
             username,
             id: socket.id,
